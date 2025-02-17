@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationBarView;
 import com.sahiwal.habittracker.databinding.ActivityMainBinding;
 import com.sahiwal.habittracker.ui.fragment.DashboardFragment;
-import com.sahiwal.habittracker.ui.fragment.HomeFragment;
+import com.sahiwal.habittracker.ui.fragment.HabitListFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int currentItem = item.getItemId();
                 if (currentItem == R.id.navigation_home){
-                    loadFragment(new HomeFragment(),1);
+                    loadFragment(new HabitListFragment(),1);
                     Toast.makeText(MainActivity.this, "Hello", Toast.LENGTH_SHORT).show();
                 }else if(currentItem == R.id.navigation_dashboard){
                     loadFragment(new DashboardFragment(),1);
                     Toast.makeText(MainActivity.this, "Hello", Toast.LENGTH_SHORT).show();
                 }else {
-                    loadFragment(new HomeFragment(),1);
+                    loadFragment(new HabitListFragment(),1);
                 }
                 return true;
             }
