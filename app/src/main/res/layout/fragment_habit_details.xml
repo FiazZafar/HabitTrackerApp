@@ -16,20 +16,11 @@
         android:textStyle="bold"
         android:padding="16dp" />
 
-    <!-- Chart for tracking progress -->
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/progressChart"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp"/>
-
-    <!-- Progress log list (RecyclerView or ListView) -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewLogs"
+        android:id="@+id/recycler_view_habits"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="match_parent" />
+
 
     <!-- Button to add a progress entry -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +24,7 @@ public class ProgressLogAdapter extends RecyclerView.Adapter<ProgressLogAdapter.
 
     @Override
     public ProgressLogViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.item_progress_log, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_progress_log_list, parent, false);
         return new ProgressLogViewHolder(itemView);
     }
 

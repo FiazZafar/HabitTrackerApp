@@ -1,8 +1,12 @@
 package com.sahiwal.habittracker.ui.fragment;
 
+import static androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL;
+
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,68 +14,74 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.sahiwal.habittracker.R;
-import com.sahiwal.habittracker.ui.models.ProgressLog;
+import com.sahiwal.habittracker.ui.adapters.HabitChartAdapter;
+import com.sahiwal.habittracker.ui.models.ChartHabit;
+import com.sahiwal.habittracker.ui.models.ProgressLogsChart;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class HabitDetailsFragment extends Fragment {
 
-    HabitDetailsFragment(){
+    private RecyclerView recyclerView;
+    private HabitChartAdapter adapter;
+    private List<ChartHabit> chartHabitList;
 
-    }
-    // Inside HabitDetailsFragment.java
-    LineChart progressChart;
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_habit_details, container, false);
 
-        // Initialize views
-        progressChart = view.findViewById(R.id.progressChart);
-        RecyclerView recyclerViewLogs = view.findViewById(R.id.recyclerViewLogs);
+        recyclerView = view.findViewById(R.id.recycler_view_habits);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Setup the chart (example for LineChart)
-        setupChart();
-
-        // Setup the RecyclerView for progress logs
-        setupLogsRecyclerView(recyclerViewLogs);
+        // Initialize and set the adapter
+        chartHabitList = getSampleData(); // Sample data or fetched from DB
+        adapter = new HabitChartAdapter(getContext(), chartHabitList);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
 
-    private void setupChart() {
-        // Sample data for chart (could be replaced with real data)
-        List<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(1, 10f)); // Day 1, 10% progress
-        entries.add(new Entry(2, 20f)); // Day 2, 20% progress
+    // Sample data generation
+    private List<ChartHabit> getSampleData() {
+        List<ChartHabit> habits = new ArrayList<>();
 
-        LineDataSet dataSet = new LineDataSet(entries, "Habit Progress");
-        dataSet.setColor(Color.BLUE);
-        dataSet.setValueTextColor(Color.BLACK);
+        // Habit 1
+        List<ProgressLogsChart> logs1 = new ArrayList<>();
+        logs1.add(new ProgressLogsChart(1, 40));
+        logs1.add(new ProgressLogsChart(2, 60));
+        logs1.add(new ProgressLogsChart(3, 80));
+        habits.add(new ChartHabit("Exercise", logs1));
 
-        LineData lineData = new LineData(dataSet);
-        progressChart.setData(lineData);
-        progressChart.invalidate(); // Refresh the chart
+        // Habit 2
+        List<ProgressLogsChart> logs2 = new ArrayList<>();
+        logs2.add(new ProgressLogsChart(1, 50));
+        logs2.add(new ProgressLogsChart(2, 70));
+        logs2.add(new ProgressLogsChart(3, 90));
+        habits.add(new ChartHabit("Reading", logs2));
+
+        // Habit 3
+        List<ProgressLogsChart> logs3 = new ArrayList<>();
+        logs3.add(new ProgressLogsChart(1, 50));
+        logs3.add(new ProgressLogsChart(2, 70));
+        logs3.add(new ProgressLogsChart(3, 90));
+        habits.add(new ChartHabit("Reading", logs3));
+
+        // Habit 4
+        List<ProgressLogsChart> logs4= new ArrayList<>();
+        logs4.add(new ProgressLogsChart(1, 50));
+        logs4.add(new ProgressLogsChart(2, 70));
+        logs4.add(new ProgressLogsChart(3, 90));
+        habits.add(new ChartHabit("Reading", logs4));
+        // Habit 5
+        List<ProgressLogsChart> logs5 = new ArrayList<>();
+        logs5.add(new ProgressLogsChart(1, 50));
+        logs5.add(new ProgressLogsChart(2, 70));
+        logs5.add(new ProgressLogsChart(3, 90));
+        habits.add(new ChartHabit("Reading", logs5));
+        return habits;
     }
-
-    private void setupLogsRecyclerView(RecyclerView recyclerViewLogs) {
-        // Setup adapter and RecyclerView for progress logs
-        recyclerViewLogs.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerViewLogs.setAdapter(new ProgressLogAdapter(getContext(), getLogsData()));
-    }
-
-    private List<ProgressLog> getLogsData() {
-        // Replace with real log data
-        List<ProgressLog> logs = new ArrayList<>();
-        logs.add(new ProgressLog("2025-02-15", "Completed 10 minutes"));
-        logs.add(new ProgressLog("2025-02-16", "Completed 15 minutes"));
-        return logs;
-    }
-
 }
