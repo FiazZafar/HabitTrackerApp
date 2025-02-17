@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sahiwal.habittracker.R;
 import com.sahiwal.habittracker.ui.adapters.HabitAdapter2;
 import com.sahiwal.habittracker.ui.models.HabitModel;
@@ -37,7 +38,7 @@ public class HabitListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerHabitList = view.findViewById(R.id.recyclerViewHabits);
-        btnAddHabit = view.findViewById(R.id.btn_add_habit);
+        btnAddHabit = view.findViewById(R.id.fabAddHabit);
 
         setupHabitListRecycler();
         setupAddHabitButton();
@@ -57,9 +58,11 @@ public class HabitListFragment extends Fragment {
     }
 
     private void setupAddHabitButton() {
-        btnAddHabit.setOnClickListener(v -> Toast.makeText(getContext(), "Add Habit clicked", Toast.LENGTH_SHORT).show());
-    }
-
-
-
+        btnAddHabit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Hello", Toast.LENGTH_SHORT).show();
+        }
+    });
+}
 }

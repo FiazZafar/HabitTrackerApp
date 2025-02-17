@@ -27,13 +27,14 @@
             android:layout_weight="1"
             android:layout_marginTop="16dp"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <Button
             android:id="@+id/fabAddHabit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add"
+            android:text="Add Habit"
             android:layout_gravity="end|bottom"
-            android:background="@android:color/transparent"
+            android:backgroundTint="#52F258"
             android:layout_margin="16dp"/>
     </LinearLayout>
 
