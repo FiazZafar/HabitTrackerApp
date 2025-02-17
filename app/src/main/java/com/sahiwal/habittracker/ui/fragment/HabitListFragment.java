@@ -51,7 +51,7 @@ public class HabitListFragment extends Fragment {
         habitList.add(new HabitModel("Meditation", 80));
         habitList.add(new HabitModel("Learning", 60));
 
-        HabitAdapter2 habitAdapter = new HabitAdapter2(HabitListFragment.this,habitList);
+        HabitAdapter2 habitAdapter = new HabitAdapter2(getContext(),habitList);
         recyclerHabitList.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerHabitList.setAdapter(habitAdapter);
     }

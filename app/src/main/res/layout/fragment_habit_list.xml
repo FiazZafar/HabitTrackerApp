@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/add"
             android:layout_gravity="end|bottom"
-            android:backgroundT="@android:color/transparent"
+            android:background="@android:color/transparent"
             android:layout_margin="16dp"/>
     </LinearLayout>
 

@@ -15,11 +15,11 @@ import com.sahiwal.habittracker.ui.models.HabitModel;
 
 import java.util.List;
 
-public class HabitAdapter2 extends RecyclerView.Adapter<HabitAdapter.HabitViewHolder> {
+public class HabitAdapter2 extends RecyclerView.Adapter<HabitAdapter2.HabitViewHolder> {
     private List<HabitModel> habitList;
     private Context context;
 
-    public HabitAdapter2(HabitListFragment context, List<HabitModel> habitList) {
+    public HabitAdapter2(Context context, List<HabitModel> habitList) {
         this.context = context;
         this.habitList = habitList;
     }
